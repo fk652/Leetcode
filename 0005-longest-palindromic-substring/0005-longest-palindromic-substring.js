@@ -6,6 +6,8 @@ var longestPalindrome = function(s) {
     let longest = "";
     
     for (let i = 0; i < s.length; i++) {
+        if (s.length - i < longest.length) break;
+        
         for (let j = s.length - 1; j >= i; j--) {
             if (j + 1 - i < longest.length) break;
             
