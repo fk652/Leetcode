@@ -7,6 +7,8 @@ var longestPalindrome = function(s) {
     
     for (let i = 0; i < s.length; i++) {
         for (let j = s.length - 1; j >= i; j--) {
+            if (j + 1 - i < longest.length) break;
+            
             if (s[i] === s[j]) {
                 const slice = s.slice(i, j+1);
                 if (isPalindrome(slice) && slice.length > longest.length) {
