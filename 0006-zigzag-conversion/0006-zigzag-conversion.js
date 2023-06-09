@@ -26,6 +26,6 @@ var convert = function(s, numRows) {
         
         rows[rowNum] += s[i];
     }
-    console.log(rows)
+    
     return Object.values(rows).join('');
 };
