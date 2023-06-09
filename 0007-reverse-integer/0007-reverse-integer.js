@@ -3,6 +3,8 @@
  * @return {number}
  */
 var reverse = function(x) {
+    if (x < -(2**31) || x > (2**31) - 1) return 0;
+    
     let reverse = 0;
     let copy = Math.abs(x);
     while (copy !== 0) {
