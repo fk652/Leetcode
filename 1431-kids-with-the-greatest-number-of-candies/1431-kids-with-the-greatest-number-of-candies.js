@@ -4,7 +4,10 @@
  * @return {boolean[]}
  */
 var kidsWithCandies = function(candies, extraCandies) {
-    const max = Math.max(...candies);
+    let max = -1;
+    for (let count of candies) {
+        if (count > max) max = count;
+    }
     
     const result = [];
     for (let count of candies) {
