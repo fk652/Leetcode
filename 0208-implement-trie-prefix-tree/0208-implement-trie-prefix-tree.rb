@@ -8,17 +8,17 @@ class Trie
     :type word: String
     :rtype: Void
 =end
-    def insert(word)
-        if word.empty?
+    def insert(word, i = 0)
+        if i == word.length
             @children[""] = nil
             return
         end
             
-        if !@children.has_key?(word[0])
-            @children[word[0]] = Trie.new()
+        if !@children.has_key?(word[i])
+            @children[word[i]] = Trie.new()
         end
         
-        @children[word[0]].insert(word[1..-1])
+        @children[word[i]].insert(word, i+1)
     end
 
 
@@ -26,14 +26,14 @@ class Trie
     :type word: String
     :rtype: Boolean
 =end
-    def search(word)
-        if word.empty?
+    def search(word, i = 0)
+        if i == word.length
             return @children.has_key?("")
         end
         
-        return false if !@children.has_key?(word[0])
+        return false if !@children.has_key?(word[i])
         
-        return @children[word[0]].search(word[1..-1])
+        return @children[word[i]].search(word, i+1)
     end
 
 
@@ -41,11 +41,11 @@ class Trie
     :type prefix: String
     :rtype: Boolean
 =end
-    def starts_with(prefix)
-        return true if prefix.empty?
-        return false if !@children.has_key?(prefix[0])
+    def starts_with(prefix, i = 0)
+        return true if i == prefix.length
+        return false if !@children.has_key?(prefix[i])
         
-        return @children[prefix[0]].starts_with(prefix[1..-1])
+        return @children[prefix[i]].starts_with(prefix, i+1)
     end
 
 
