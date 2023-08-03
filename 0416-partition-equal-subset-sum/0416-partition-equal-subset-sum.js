@@ -6,7 +6,8 @@ var canPartition = function(nums) {
     const sum = nums.reduce((sum, ele) => sum + ele);
     if (sum % 2 !== 0) return false;
     
-    return findSubset(nums, nums.length - 1, sum/2, {});
+    const memo = {};
+    return findSubset(nums, nums.length - 1, sum/2, memo);
 };
 
 function findSubset(nums, i, sum, memo) {
