@@ -7,23 +7,28 @@ var findMinHeightTrees = function(n, edges) {
     if (!edges.length) return [0];
     
     const graph = buildGraph(n, edges);
-    
-    while (Object.values(graph).length > 2) {
-        const leafNodes = [];
-        for (const i in graph) {
-            if (graph[i].size === 1) {
-                leafNodes.push(i);
-            }
+
+    let leafNodes = [];
+    for (const i in graph) {
+        if (graph[i].size === 1) {
+            leafNodes.push(i);
         }
-        
+    }
+    
+    while (n > 2) {
+        n -= leafNodes.length;
+        const newLeaves = [];
+
         for (const leaf of leafNodes) {
             const j = graph[leaf].values().next().value;
             graph[j].delete(leaf);
-            delete graph[leaf];
+            if (graph[j].size === 1) newLeaves.push(j);
         }
+
+        leafNodes = newLeaves;
     }
         
-    return Object.keys(graph);
+    return leafNodes;
 };
 
 var buildGraph = function(n, edges) {
