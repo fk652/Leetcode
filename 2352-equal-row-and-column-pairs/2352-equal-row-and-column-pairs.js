@@ -8,17 +8,10 @@ var equalPairs = function(grid) {
         row in rowMap ? rowMap[row]++ : rowMap[row] = 1;
     }
     
-    const columns = [];
-    for (let i = 0; i < grid.length; i++) columns.push([]);
-    for (let i = 0; i < grid.length; i++) {
-        for (let j = 0; j < grid.length; j++) {
-            columns[j].push(grid[i][j]);
-        }
-    }
-    
     let count = 0;
-    for (const col of columns) {
-        if (col in rowMap) count += rowMap[col];
+    for (let i = 0; i < grid.length; i++) {
+        const col = grid.map(row => row[i]);
+        count += rowMap[col] || 0;
     }
     
     return count;
