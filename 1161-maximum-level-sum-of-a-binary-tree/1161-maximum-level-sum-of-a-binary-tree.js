@@ -11,31 +11,30 @@
  * @return {number}
  */
 var maxLevelSum = function(root) {
-    const levelSums = [];
-    const queue = [[root, 0]];
-    
-    while (queue.length) {
-        const [node, level] = queue.shift();
-        
-        if (level > levelSums.length-1) {
-            levelSums.push(node.val);
-        } else {
-            levelSums[level] += node.val;
-        }
-        
-        if (node.left) queue.push([node.left, level+1]);
-        if (node.right) queue.push([node.right, level+1]);
-    }
-    
+    const queue = [root];
     let maxSum = -Infinity;
     let maxLevel = null;
+    let currentLevel = 1;
     
-    for (let i = 0; i < levelSums.length; i++) {
-        if (levelSums[i] > maxSum) {
-            maxSum = levelSums[i];
-            maxLevel = i;
+    while (queue.length) {
+        const levelN = queue.length;
+        let sum = 0;
+
+        for (let i = 0; i < levelN; i++) {
+            const node = queue.shift();
+            sum += node.val;
+            if (node.left) queue.push(node.left);
+            if (node.right) queue.push(node.right);
         }
+
+        if (sum > maxSum) {
+            maxSum = sum;
+            maxLevel = currentLevel;
+        }
+
+        currentLevel++;
     }
     
-    return maxLevel + 1;
+    
+    return maxLevel;
 };
