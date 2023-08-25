@@ -14,10 +14,12 @@
 var deleteNode = function(root, key) {
     if (!root) return root;
     
+    // recursively look for the node to delete
     if (root.val === key) {
         if (!root.left) return root.right;
         if (!root.right) return root.left;
         
+        // have to move the smallest node on the right side up to the top
         const minNode = getMinNode(root.right);
         root.right = deleteNode(root.right, minNode.val);
         minNode.left = root.left;
@@ -33,6 +35,7 @@ var deleteNode = function(root, key) {
 };
 
 var getMinNode = function(node) {
+    // keep going left to find the smallest node in a BST
     while (node.left) node = node.left;
     return node;
 }
