@@ -10,18 +10,16 @@ var minReorder = function(n, connections) {
     const visited = new Set([0]);
     
     while (queue.length) {
-        const newQueue = [];
-        
         const node = queue.shift();
-        
-        for (const neighbor of graph[node]) {
+
+        for (const neighbor of invertedGraph[node]) {
             if (!visited.has(neighbor)) {
                 visited.add(neighbor);
                 queue.push(neighbor);
             }
         }
-        
-        for (const neighbor of invertedGraph[node]) {
+
+        for (const neighbor of graph[node]) {
             if (!visited.has(neighbor)) {
                 visited.add(neighbor);
                 queue.push(neighbor);
@@ -43,8 +41,8 @@ var buildGraphs = function(n, connections) {
     }
     
     for (const [a, b] of connections) {
-        graph[b].push(a);
-        inverted[a].push(b);
+        graph[a].push(b);
+        inverted[b].push(a);
     }
     
     return [graph, inverted];
