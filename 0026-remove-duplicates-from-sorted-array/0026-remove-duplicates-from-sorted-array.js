@@ -4,6 +4,7 @@
  */
 var removeDuplicates = function(nums) {
     //involves swapping numbers making the first k numbers all unique
+    // i will end up being the length of the first k numbers
     let i = 0;
     
     for (let j = 0; j <= nums.length; j++) {
