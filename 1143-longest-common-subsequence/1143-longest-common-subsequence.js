@@ -7,6 +7,7 @@
 // dp approach keeping track of current and previous rows, to save space
 // O(n*m) approach going through each combo of substring pairs from end to start
 // using i and j to keep track of current index of text1 and text2, respectively
+// only needs to keep track of text2 compared to text1, so dp row length = text2.length
 var longestCommonSubsequence = function(text1, text2) {
     let prev = Array(text2.length + 1).fill(0);
     let curr = Array(text2.length + 1).fill(0);
