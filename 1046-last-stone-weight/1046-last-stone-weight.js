@@ -16,5 +16,6 @@ var lastStoneWeight = function(stones) {
         }
     };
     
+    // return last remaining stone, if any
     return stones.length ? stones[0] : 0;
 };
