@@ -15,6 +15,7 @@ var dailyTemperatures = function(temperatures) {
     
     // stack will contain indexes of decreasing temp days in order
     // since lower temp days are consecutively removed once a higher day is found
+    // thus only lower temps that havent found a higher day yet remain stored
     const stack = [];
     
     // go through each temp
