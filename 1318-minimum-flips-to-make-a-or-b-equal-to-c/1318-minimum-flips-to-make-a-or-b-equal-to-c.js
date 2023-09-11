@@ -13,6 +13,7 @@ var minFlips = function(a, b, c) {
     // but 32 bit integer is the max size in this problem
     for (let i = 0; i < 32; i++) {
         // getting the bit at position i
+        // uses the right shift (>>) operator and bitwise AND (&) operator
         const bitA = (a >> i) & 1;
         const bitB = (b >> i) & 1;
         const bitC = (c >> i) & 1;
