@@ -22,9 +22,15 @@ var minFlips = function(a, b, c) {
         // else if bitC = 0, add one flip each if bitA or bitB is 1
         if (bitC === 1) {
             if (bitA === 0 && bitB === 0) flips++;
+            
+            // same as above since true/false converts to 1/0
+            // flips += (bitA === 0 && bitB === 0);
         } else {
             if (bitA === 1) flips++;
             if (bitB === 1) flips++;
+            
+            // same as above since true/false converts to 1/0
+            // flips += (bitA === 1) + (bitB === 1);
         }
     }
     
