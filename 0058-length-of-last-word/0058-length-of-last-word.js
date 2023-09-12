@@ -3,10 +3,11 @@
  * @return {number}
  */
 
+// go through each character in the string
 // keep track of current word length and last found word length
 var lengthOfLastWord = function(s) {
     let currentLength = 0;
-    let last = null;
+    let last = 0;
     
     for (const char of s) {
         if (char === ' ') {
