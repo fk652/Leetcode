@@ -6,7 +6,7 @@
 
 // map the highest index found for each number,
 // since we need to find the first smallest difference of i - j <= k
-// go from start to end to find matching numbers that satisfy the condition
+// go through increasing index, so i is always > whatever j is mapped
 var containsNearbyDuplicate = function(nums, k) {
     const indexMap = {};
 
