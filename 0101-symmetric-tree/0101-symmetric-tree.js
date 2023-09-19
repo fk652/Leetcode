@@ -18,7 +18,7 @@ var isSymmetric = function(root) {
 };
 
 var checkSymmetry = function(node1, node2) {
-    // base case when either node is null
+    // base case when either node is null, since there are no subtrees to compare
     // then return whether or not both nodes are null
     if (!node1 || !node2) return !node1 && !node2;
 
