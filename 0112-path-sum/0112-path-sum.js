@@ -14,7 +14,7 @@
 
 // use recursive dfs to count different path sums to leaf nodes
 // keeping track of currentSum down the recursion, adding current node value to it
-// return true if the currentSum = targetSum and current node is a leaf (no children)
+// return true if the currentSum = targetSum and current node is a leaf (no children),
 // or check left and right paths and return if either of those resulted true
 var hasPathSum = function(root, targetSum, currentSum = 0) {
     if (!root) return false;
