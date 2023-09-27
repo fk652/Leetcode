@@ -3,7 +3,7 @@
  * @return {number}
  */
 
-// Modify jump game I solution to count min jumps,
+// Modify jump game I O(n) solution to count min jumps,
 // by keeping track of the next best spot to jump from.
 
 // Increment jump count whenever the next jump spot is passed,
