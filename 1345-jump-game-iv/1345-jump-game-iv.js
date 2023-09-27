@@ -5,9 +5,10 @@
 
 // can use bfs to find shortest path to the end
 // map adjacent spots to their values
-// can optimize by squashing adjacent repeats > 3 together during mapping
-// can also optimize bfs by clearing the mapped neighbors since we know they're visited
+// can optimize by squashing adjacent 3 or more repeats together in the mapping
+// can optimize bfs by clearing the mapped neighbors since we know they're visited
 // return distance once the end is found
+
 var minJumps = function(arr) {
     const spotMap = {};
     for (let i = 0; i < arr.length; i++) {
