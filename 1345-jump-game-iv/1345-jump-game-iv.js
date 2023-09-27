@@ -29,8 +29,8 @@ var minJumps = function(arr) {
             const spot = queue.shift();
             if (spot === arr.length - 1) return distance;
 
-            // also need to consider adjacent spots
             const neighbors = spotMap[arr[spot]];
+            // also need to consider adjacent spots
             if (spot+1 < arr.length) neighbors.push(spot+1);
             if (spot-1 >= 0) neighbors.push(spot-1);
 
