@@ -5,26 +5,18 @@
 
 // can use bfs to find shortest path to the end
 // map adjacent spots to their values
-// can optimize by squashing adjacent 3 or more repeats together in the mapping
-// can optimize bfs by clearing the mapped neighbors since we know they're visited
+// can optimize mapping by skipping adjacent 3+ repeats
+// since we only care about jumping to the start or end of 3+ repeat
+// can also optimize bfs by clearing mapped neighbors since we know they're visited
 // return distance once the end is found
 
 var minJumps = function(arr) {
     const spotMap = {};
     for (let i = 0; i < arr.length; i++) {
-        if (arr[i] in spotMap) {
-            const spots = spotMap[arr[i]];
-            if (arr[i] === arr[i-2]) {
-                spots[spots.length-1] = i;
-            } else {
-                spots.push(i);
-            }
-        } else {
-            spotMap[arr[i]] = [i];
-        }
+        while (arr[i] === arr[i-1] && arr[i] === arr[i+1]) i++;
 
-        // arr[i] in spotMap ? spotMap[arr[i]].push(i)
-        //                   : spotMap[arr[i]] = [i];
+        arr[i] in spotMap ? spotMap[arr[i]].push(i)
+                          : spotMap[arr[i]] = [i];
     }
 
     const visited = new Set([0]);
@@ -37,6 +29,7 @@ var minJumps = function(arr) {
             const spot = queue.shift();
             if (spot === arr.length - 1) return distance;
 
+            // also need to consider adjacent spots
             const neighbors = spotMap[arr[spot]];
             if (spot+1 < arr.length) neighbors.push(spot+1);
             if (spot-1 >= 0) neighbors.push(spot-1);
@@ -49,6 +42,7 @@ var minJumps = function(arr) {
                 }
             }
         }
+        
         distance++;
     }
     
