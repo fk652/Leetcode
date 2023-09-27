@@ -8,7 +8,7 @@
 // Can optimize mapping by skipping adjacent 3+ repeats,
 // since we only care about jumping to the start or end of 3+ repeats
 // Can also optimize bfs by clearing mapped neighbors since we know they're visited
-// Return distance once the end is found
+// Return distance as soon as last index is reached
 
 var minJumps = function(arr) {
     const spotMap = {};
