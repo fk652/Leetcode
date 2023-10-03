@@ -19,6 +19,10 @@
 # and connect the prev and next nodes to close the gap in the current list
 # use a previous and current pointer to help with that
 
+# also need to consider if the entire current list was partitioned
+# which happens if prev pointer remained None
+# e.g the head was continously being removed
+
 class Solution:
     def partition(self, head: Optional[ListNode], x: int) -> Optional[ListNode]:
         if not head: 
