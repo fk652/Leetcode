@@ -9,6 +9,7 @@
 # keep track of the current number while going down a path
 # if leaf node reached, return the current number
 # otherwise add left and right path results and return the total
+# base case: return 0 if current root node is None
 
 class Solution:
     def sumNumbers(self, root: Optional[TreeNode], curr = 0) -> int:
@@ -19,10 +20,5 @@ class Solution:
         if not root.left and not root.right:
             return curr
 
-        total = 0
-        if root.left:
-            total += self.sumNumbers(root.left, curr)
-        if root.right:
-            total += self.sumNumbers(root.right, curr)
-        return total
+        return self.sumNumbers(root.left, curr) + self.sumNumbers(root.right, curr)
         
