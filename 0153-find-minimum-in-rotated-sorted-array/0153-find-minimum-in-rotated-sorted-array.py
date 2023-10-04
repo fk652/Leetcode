@@ -11,16 +11,32 @@
 # when 2 numbers are left, can't properly discard left half because mid is rounded down
 # so we must do mid+1 when setting it as the new low
 
+# class Solution:
+#     def findMin(self, nums: List[int]) -> int:
+#         def search(nums, low, high):
+#             if low == high:
+#                 return nums[low]
+#
+#             mid = math.floor((low + high) / 2)
+#             if (nums[mid] <= nums[high]):
+#                 return search(nums, low, mid)
+#             else:
+#                 return search(nums, mid+1, high)
+#       
+#         return search(nums, 0, len(nums)-1)
+
+
+# same as above but with a while loop instead of recursion
 class Solution:
     def findMin(self, nums: List[int]) -> int:
-        def search(nums, low, high):
-            if low == high:
-                return nums[low]
-
+        low = 0
+        high = len(nums) - 1
+        
+        while low < high:
             mid = math.floor((low + high) / 2)
             if (nums[mid] <= nums[high]):
-                return search(nums, low, mid)
+                high = mid
             else:
-                return search(nums, mid+1, high)
+                low = mid + 1
             
-        return search(nums, 0, len(nums)-1)
+        return nums[low]
