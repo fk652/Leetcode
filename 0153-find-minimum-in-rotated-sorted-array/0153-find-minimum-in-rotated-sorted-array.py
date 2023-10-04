@@ -26,6 +26,7 @@
 #         return search(nums, 0, len(nums)-1)
 
 
+
 # same as above but with a while loop instead of recursion
 class Solution:
     def findMin(self, nums: List[int]) -> int:
