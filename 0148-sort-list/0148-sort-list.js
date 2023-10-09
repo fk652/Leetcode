@@ -16,10 +16,10 @@
 // recursively merge sort left and right halves
 // then merge the left and right halves
 
-// merging involves making a new list, and adding lowest values from left and right
-// left and right list nodes will slowly be disconnected and turned into a sorted linked list
-// add any remainder left or right nodes to the end of the sorted list
-// and keep track of the original head of the sorted list
+// merging involves making a new list for sorted values
+// left and right nodes will end up disconnected and added into the sorted linked list
+// add the remainder left or right list to the end of the sorted list
+// keep track of and return the original head of the sorted list
 
 var sortList = function(head) {
     if (!head || !head.next) return head;
