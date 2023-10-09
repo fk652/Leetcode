@@ -20,7 +20,6 @@
 // left and right nodes will end up disconnected and added into the sorted linked list
 // add the remainder left or right list to the end of the sorted list
 // keep track of and return the original head of the sorted list
-
 var sortList = function(head) {
     if (!head || !head.next) return head;
     
