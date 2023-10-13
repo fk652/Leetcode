@@ -7,6 +7,7 @@
 // take the current queue and add parantheses to each item to build the next level
 // can either enclose, or add closed pair to the left and right
 // make sure that enclose, left, and right results are unique from each other
+// O(n!) runtime for slowly building up permutations from the n-1 solution
 // var generateParenthesis = function(n) {
 //     let queue = [""];
 //
@@ -37,6 +38,7 @@
 // generates all combinations by making 2 recursive calls,
 // incrementally adding one open and one closed parantheses to current
 // also make sure amount of closed < open to avoid invalid parantheses
+// O(2^n) runtime for building up whole combos of n parantheses
 var generateParenthesis = function(n) {
     const result = [];
 
