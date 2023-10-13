@@ -9,8 +9,8 @@
 // then apply the operation to both numbers and push the result to the top
 // in the end only one number representing the final result remains
 
-// also need to convert number strings to integers (using Number() or parseInt())
-// for division, we need to truncate the result to zero (using Math.trunc())
+// also need to convert number strings to integers, using Number() or parseInt()
+// for division, we need to truncate the result to zero, using Math.trunc()
 
 var evalRPN = function(tokens) {
     const stack = [];
