@@ -3,11 +3,11 @@
  * @return {number}
  */
 
-// two pointer strategy comparing two ends
+// two pointer strategy comparing two ends, i/j, going until both ends meet/cross (i > j)
 // calculate water contained between those two ends, ignoring any walls in between
+// because we're only looking for two lines that contain the most water between them
 // update max water if larger is found
-// then incrementing/decrementing i/j if that wall is smaller
-// function ends once both ends meet/cross
+// then increment/decrement i or j if that wall is smaller
 
 var maxArea = function(height) {
     let i = 0;
