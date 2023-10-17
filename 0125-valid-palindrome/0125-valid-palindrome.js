@@ -2,21 +2,23 @@
  * @param {string} s
  * @return {boolean}
  */
+// use two pointers at the start and end of s
+// keep incrementing/decrementing i/j until the two pointers reach the middle
+// return false if s[i] !== s[j] (invalid palindrome)
+
+// also need to handle upper/lowercase and non-alphanumeric characters
+// so first convert the whole s to lowercase
+// and replace non a-z/0-9 characters with '' (removing all non-alphanumeric chaarcters)
+
 var isPalindrome = function(s) {
-    s = s.toLowerCase();
-    const alphanumeric = new Set(['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','0','1','2','3','4','5','6','7','8','9'])
-    
+    s = s.toLowerCase().replace(/[^a-z0-9]/g, '');
     let i = 0;
-    let j = s.length - 1;
+    let j = s.length-1;
     
     while (i < j) {
-        if (!alphanumeric.has(s[i])) i++;
-        else if (!alphanumeric.has(s[j])) j--;
-        else {
-            if (s[i] !== s[j]) return false;
-            i++;
-            j--;
-        }
+        if (s[i] !== s[j]) return false;
+        i++;
+        j--;
     }
     
     return true;
