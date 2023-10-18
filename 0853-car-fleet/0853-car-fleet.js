@@ -7,9 +7,9 @@
 
 // use a stack to find out number of fleets
 // the stack will keep track of the slowest cars leading a fleet
-// first combine the cars positions and speeds together into an array
+// first combine the car positions and speeds together into an array of [position, speed]
 // then sort by biggest to smallest position
-// this way we find which slow cars nearest the target will slow down others and form a fleet
+// need to find which slow cars nearest the target will slow down others and form a fleet
 
 // initialize the stack with the first car, then go through all other cars
 // if current car is faster than the slowest car on top of the stack:
@@ -41,3 +41,33 @@ var carFleet = function(target, position, speed) {
 
     return stack.length;
 };
+
+
+// -------------------------------------------------------------------------------------
+
+// alternate solution using the time for each car to reach the target
+// still map positions and speed together, and sort from biggest to smallest position
+// then map it again to find how long it takes each car to reach the target
+// keep track of a max time
+// if current car time > max time, new fleet is formed
+// still O(n*log(n)) overall complexity for sorting
+// and O(n) extra space for the new times array
+
+// var carFleet = function(target, position, speed) {
+//     if (position.length <= 1) return position.length;
+
+//     const times = position.map((pos, i) => [pos, speed[i]])
+//                           .sort((a, b) => b[0] - a[0])
+//                           .map(car => (target - car[0]) / car[1]);
+//     let maxTime = 0;
+//     let numFleets = 0;
+
+//     for (const time of times) {
+//         if (time > maxTime) {
+//             maxTime = time;
+//             numFleets++
+//         }
+//     }
+
+//     return numFleets;
+// };
