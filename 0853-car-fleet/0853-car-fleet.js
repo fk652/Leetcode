@@ -17,6 +17,10 @@
 // if they meet after target, push current onto the stack (current starts it's own fleet)
 // otherwise no need to change anything (current becomes part of the fleet with stack top)
 
+// O(n*log(n) + O(n)) time complexity for sorting the cars and then going through each of them
+// So overall time complexity is O(n*log(n)) 
+// O(2*n) => O(n) extra space used for making a new cars array, and a stack for fleets
+
 var carFleet = function(target, position, speed) {
     if (position.length <= 1) return position.length;
 
