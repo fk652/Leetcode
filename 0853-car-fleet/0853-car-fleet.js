@@ -27,7 +27,8 @@ var carFleet = function(target, position, speed) {
     for (let i = 1; i < cars.length; i++) {
         const last = stack[stack.length-1];
         if (cars[i][1] > last[1]) {
-            const crossPosition = crossPoint(cars[i], last);
+            const crossTime = (last[0] - cars[i][0]) / (cars[i][1] - last[1]);
+            const crossPosition = last[0] + (last[1] * crossTime);
             if (crossPosition > target) stack.push(cars[i]);
         } else {
             stack.push(cars[i]);
@@ -36,9 +37,3 @@ var carFleet = function(target, position, speed) {
 
     return stack.length;
 };
-
-const crossPoint = (fastCar, slowCar) => {
-    const crossTime = (slowCar[0] - fastCar[0]) / (fastCar[1] - slowCar[1]);
-    const crossPosition = slowCar[0] + (slowCar[1] * crossTime);
-    return crossPosition;
-}
