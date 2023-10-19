@@ -3,16 +3,31 @@
  * @param {number} target
  * @return {number}
  */
-var search = function(nums, target, i=0, j=nums.length-1,) {
-    if (i > j) return -1;
+
+// basic binary search algorithm
+// set a low and high pointer to both ends of the array
+// keep comparing mid point between low and high to target, until low > high
+// return mid if target is found
+// if mid < target, check the right half of the remaining array (by setting low = mid + 1)
+// otherwise check the left half of the remaining array (by setting high = mid - 1)
+
+// O(log(n)) runtime 
+// because we recursively discard half of the array while finding the target in a sorted array
+
+var search = function(nums, target) {
+    let low = 0;
+    let high = nums.length-1;
     
-    const mid = Math.floor((i + j) / 2);
-    
-    if (nums[mid] === target) {
-        return mid;
-    } else if (nums[mid] > target) {
-        return search(nums, target, i, mid-1);
-    } else {
-        return search(nums, target, mid+1, j);
+    while (low <= high) {
+        const mid = Math.floor((high + low) / 2);
+        if (nums[mid] === target) {
+            return mid;
+        } else if (nums[mid] < target) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
     }
+    
+    return -1;
 };
