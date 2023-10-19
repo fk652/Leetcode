@@ -6,7 +6,7 @@
 
 // the min speed, k, is in the range [1, max bananas in the piles]
 // so we do binary search between that range to find the min k,
-// that satisfies the condition of eating all bananas in h hours,
+// that satisfies the condition of eating all bananas in h hours, 
 // using mid as k
 
 // at every search iteration, find how many hours it takes to eat all bananas for that k
