@@ -20,56 +20,54 @@
 // or null prev pointers,
 // or first and last nodes being next to each other
 
-// var swapNodes = function(head, k) {
-//     if (!head || !head.next) return head;
+var swapNodes = function(head, k) {
+    // handling edge cases
+    if (!head || !head.next) return head;
 
-//     let firstNodePrev = null;
-//     let firstNode = head;
-//     for (let i = 0; i < k-1; i++) {
-//         firstNodePrev = firstNode;
-//         firstNode = firstNode.next;
-//     }
-//     console.log(firstNodePrev, firstNode);
+    // find first node and it's previous
+    let firstNodePrev = null;
+    let firstNode = head;
+    for (let i = 0; i < k-1; i++) {
+        firstNodePrev = firstNode;
+        firstNode = firstNode.next;
+    }
     
-//     let lastNodePrev = null;
-//     let lastNode = head;
-//     let fast = firstNode.next;
-//     while (fast) {
-//         lastNodePrev = lastNode;
-//         lastNode = lastNode.next;
-//         fast = fast.next;
-//     }
-//     if (firstNode === lastNode) return head;
+    // find last node and it's previous
+    let lastNodePrev = null;
+    let lastNode = head;
+    let fast = firstNode.next;
+    while (fast) {
+        lastNodePrev = lastNode;
+        lastNode = lastNode.next;
+        fast = fast.next;
+    }
+    
+    // handling edge cases
+    if (firstNode === lastNode) return head;
+    if (!lastNodePrev || firstNodePrev === lastNode) {
+        [lastNodePrev, firstNodePrev] = [firstNodePrev, lastNodePrev];
+        [lastNode, firstNode] = [firstNode, lastNode];
+    }
 
-//     if (!lastNodePrev || firstNodePrev === lastNode) {
-//         [lastNodePrev, firstNodePrev] = [firstNodePrev, lastNodePrev];
-//         [lastNode, firstNode] = [firstNode, lastNode];
-//     }
+    // temp pointers to the first's/last's next nodes
+    const firstNodeNext = firstNode.next;
+    const lastNodeNext = lastNode.next;
 
-//     const firstNodeNext = firstNode.next;
-//     const lastNodeNext = lastNode.next;
-
-//     if (!firstNodePrev) {
-//         firstNode.next = lastNodeNext;
-//         if (firstNodeNext === lastNode) {
-//             lastNode.next = firstNode;
-//         } else {
-//             lastNodePrev.next = firstNode;
-//             lastNode.next = firstNodeNext;
-//         }
-//         return lastNode;
-//     } else {
-//         firstNodePrev.next = lastNode;
-//         firstNode.next = lastNodeNext;
-//         if (firstNodeNext === lastNode) {
-//             lastNode.next = firstNode;
-//         } else {
-//             lastNode.next = firstNodeNext;
-//             lastNodePrev.next = firstNode;
-//         }
-//         return head;
-//     }
-// };
+    // swapping the first/last nodes
+    // and handling if they're adjacent to each other
+    firstNode.next = lastNodeNext;
+    if (firstNodeNext === lastNode) {
+        lastNode.next = firstNode;
+    } else {
+        lastNodePrev.next = firstNode;
+        lastNode.next = firstNodeNext;
+    }
+    
+    // return new head if needed
+    if (!firstNodePrev) return lastNode;
+    firstNodePrev.next = lastNode;
+    return head;
+};
 
 
 // -----------------------------------------------------------------------------------------
@@ -86,19 +84,19 @@
 // move fast pointer to tail while also moving last node pointer
 // this ends up moving n - k times, which gets us to the kth node from the end
 
-var swapNodes = function(head, k) {
-    let firstNode = head;
-    for (i = 0; i < k - 1; i++) {
-        firstNode = firstNode.next;
-    }
+// var swapNodes = function(head, k) {
+//     let firstNode = head;
+//     for (i = 0; i < k - 1; i++) {
+//         firstNode = firstNode.next;
+//     }
 
-    let fast = firstNode;
-    let lastNode = head;
-    while (fast.next) {
-        fast = fast.next;
-        lastNode = lastNode.next
-    }
+//     let fast = firstNode;
+//     let lastNode = head;
+//     while (fast.next) {
+//         fast = fast.next;
+//         lastNode = lastNode.next
+//     }
 
-    [firstNode.val, lastNode.val] = [lastNode.val, firstNode.val];
-    return head
-};
+//     [firstNode.val, lastNode.val] = [lastNode.val, firstNode.val];
+//     return head
+// };
