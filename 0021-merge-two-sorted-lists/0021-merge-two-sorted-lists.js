@@ -10,25 +10,25 @@
  * @param {ListNode} list2
  * @return {ListNode}
  */
+
+// recursive version
+// take the min between the 2 list heads,
+// and set it's next to the merged list from the next recursive call
+// passing in that's min.next in the next recursive call (to move through the list)
+
+// base case is when either list reaches the end, so return the remaining other list
+// after reaching base case, pointers get changed while building back up,
+// merging both the lists in sorted order
+
 var mergeTwoLists = function(list1, list2) {
-    let current1 = list1;
-    let current2 = list2;
-    let head = new ListNode(null);
-    let tail = head;
+    if (!list1) return list2;
+    if (!list2) return list1;
     
-    while (current1 && current2) {
-        if (current1.val < current2.val) {
-            tail.next = current1;
-            current1 = current1.next;
-        } else {
-            tail.next = current2;
-            current2 = current2.next;
-        }
-        tail = tail.next;
+    if (list1.val < list2.val) {
+        list1.next = mergeTwoLists(list1.next, list2);
+        return list1;
+    } else {
+        list2.next = mergeTwoLists(list1, list2.next);
+        return list2;
     }
-    
-    if (current1) tail.next = current1;
-    if (current2) tail.next = current2;
-    
-    return head.next;
 };
