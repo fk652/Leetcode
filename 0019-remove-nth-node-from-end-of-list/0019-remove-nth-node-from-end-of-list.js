@@ -24,6 +24,8 @@
 // so just set slow.next to slow.next.next to remove the nth node from the end
 // and return head since that hasn't changed in this case
 
+// O(n) runtime where n = sz = length of the list
+
 var removeNthFromEnd = function(head, n) {
     let fast = head;
     for (let i = 0; i < n; i++) {
