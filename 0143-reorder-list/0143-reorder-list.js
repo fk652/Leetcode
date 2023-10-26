@@ -27,7 +27,10 @@
 // at that point no more swaps are needed
 
 // return the original head since that doesn't change
+
 // O(n^2) solution since for every Li node we have to iterate to the list end (Ln-i)
+// because we have a singly linked list and can't easily go backwards from tail
+// so we have to keep finding the new tail
 
 // var reorderList = function(head) {
 //     let curr = head;
