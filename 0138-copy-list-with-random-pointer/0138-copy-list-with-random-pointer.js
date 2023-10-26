@@ -28,11 +28,10 @@
 var copyRandomList = function(head) {
     const copyMap = new Map();
     copyMap.set(null, null);
+    
     let curr = head;
-
     while (curr) {
-        const copy = new Node(curr.val, null, null);
-        copyMap.set(curr, copy);
+        copyMap.set(curr, new Node(curr.val));
         curr = curr.next;
     }
     
