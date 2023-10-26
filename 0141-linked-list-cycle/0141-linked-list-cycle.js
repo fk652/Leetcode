@@ -17,7 +17,7 @@
 
 // O(n) solution since we at most go around the entire loop or list once
 // where slow at most reaches the actual length end before fast catches up
-// also O(1) space used for the 2 pointers
+// O(1) space used for the 2 pointers
 
 var hasCycle = function(head) {
     let slow = head;
@@ -46,7 +46,6 @@ var hasCycle = function(head) {
 
 //     while (curr) {
 //         if (curr.next === dummy) return true;
-
 //         const temp = curr.next;
 //         curr.next = dummy;
 //         curr = temp;
